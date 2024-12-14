@@ -61,7 +61,7 @@ class StreamlitRouter:
             self.view_methods[endpoint] = methods
 
             @wraps(func)
-            def wraped(*args, **kwargs):
+            def wrapped(*args, **kwargs):
                 if args:
                     raise AssertionError(
                         "positon style args not allowed for route func"
@@ -139,7 +139,7 @@ class StreamlitRouter:
         query_dict = (
             st.query_params
             if hasattr(st, "query_params")
-            else st.experimental_get_query_params()
+            else st.experimental_set_query_params()
         )
         if request:
             self.handle(*request)
